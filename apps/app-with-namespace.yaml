@@ -9,15 +9,15 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: "mas"
-destination:
-  server: 'https://kubernetes.default.svc'
-  namespace: mascore2818
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: mascore2818
   source:
     repoURL: "https://github.com/tomklapiscak/gitops-sandbox"
     path: charts/dummy
     targetRevision: "mascore2818"
     helm:
-      values:
+      values: |
         namespace: "mascore2818"
   syncPolicy:
     automated:
