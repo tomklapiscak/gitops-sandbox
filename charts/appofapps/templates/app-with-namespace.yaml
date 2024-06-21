@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: "mascore2818.{{ .Values.id }}"
+  name:  "mascore2818.root.dummy.{{ .Values.id }}"
   namespace: "openshift-gitops"
   finalizers:
     - resources-finalizer.argocd.argoproj.io

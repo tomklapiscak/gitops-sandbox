@@ -12,9 +12,12 @@ spec:
         - values:
             id: a
             namespace: "testa"
+        - values:
+            id: b
+            namespace: "testb"
   template:
     metadata:
-      name: "mascore2818.appofapps"
+      name: "mascore2818.root.{{ .values.id }}"
     spec:
       project: "mas"
       source:
