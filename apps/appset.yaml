@@ -1,0 +1,37 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: mascore2818.appset
+  namespace: openshift-gitops
+spec:
+  goTemplate: true
+  generators:
+  - list:
+      elements:
+        - values:
+            id: a
+            namespace: "testa"
+  template:
+    metadata:
+      name: "mascore2818.appofapps"
+    spec:
+      project: "mas"
+      source:
+          repoURL: "https://github.com/tomklapiscak/gitops-sandbox"
+          path: charts/appofapps
+          targetRevision: "mascore2818"
+          helm:
+            values: |
+              id: {{ .values.id }}
+              namespace: {{ .values.namespace }}
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: "openshift-gitops"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=false
+          - RespectIgnoreDifferences=true
