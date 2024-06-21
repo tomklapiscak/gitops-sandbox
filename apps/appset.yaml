@@ -12,9 +12,11 @@ spec:
         - values:
             id: a
             namespace: "testa"
+            enable_dummy: true
         - values:
             id: b
             namespace: "testb"
+            enable_dummy: true
   template:
     metadata:
       name: "mascore2818.root.{{ .values.id }}"
@@ -28,6 +30,7 @@ spec:
             values: |
               id: {{ .values.id }}
               namespace: {{ .values.namespace }}
+              enable_dummy: {{ .values.enable_dummy }}
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: "openshift-gitops"
