@@ -28,5 +28,5 @@ spec:
       - RespectIgnoreDifferences=true
     managedNamespaceMetadata:
       labels:
-        app.kubernetes.io/instance: "mascore2818.{{ .Values.id }}"
+        app.kubernetes.io/instance: "mascore2818.root.dummy.{{ .Values.id }}"
 {{- end}}
