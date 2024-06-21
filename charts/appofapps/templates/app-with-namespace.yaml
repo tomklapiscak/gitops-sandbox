@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: "mascore2818"
+  name: "mascore2818.{{ .Values.id }}"
   namespace: "openshift-gitops"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -9,14 +9,15 @@ spec:
   project: "mas"
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: mascore2818
+    namespace: {{ .Values.namespace }}
   source:
     repoURL: "https://github.com/tomklapiscak/gitops-sandbox"
     path: charts/dummy
     targetRevision: "mascore2818"
     helm:
       values: |
-        namespace: "mascore2818"
+        id: {{ .Values.id }}
+        namespace: {{ .Values.namespace }}
   syncPolicy:
     automated:
       prune: true
@@ -26,4 +27,4 @@ spec:
       - RespectIgnoreDifferences=true
     managedNamespaceMetadata:
       labels:
-        app.kubernetes.io/instance: "mascore2818"
+        app.kubernetes.io/instance: "mascore2818.{{ .Values.id }}"

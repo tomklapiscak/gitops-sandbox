@@ -5,4 +5,4 @@ metadata:
   name: placeholder
   namespace: {{ .Values.namespace }}
 data:
-  nodata: ""
+  id: "{{ .Values.id }}"
