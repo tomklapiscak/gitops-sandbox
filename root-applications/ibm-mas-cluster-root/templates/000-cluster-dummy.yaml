@@ -1,4 +1,5 @@
 {{- if not (empty .Values.cluster_dummy) }}
+
 ---
 # IBM Maximo Operator Catalog
 apiVersion: argoproj.io/v1alpha1
@@ -28,7 +29,7 @@ spec:
   project: "{{ .Values.argo.projects.apps }}"
   destination:
     server: {{ .Values.cluster.url }}
-    namespace: namespace: "mascore2816-{{ .Values.cluster.id }}"
+    namespace: "mascore2816-{{ .Values.cluster.id }}"
   source:
     repoURL: "{{ .Values.source.repo_url }}"
     path: charts/dummy
