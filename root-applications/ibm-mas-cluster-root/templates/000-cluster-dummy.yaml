@@ -38,7 +38,7 @@ spec:
       env:
         - name: {{ .Values.avp.values_varname }}
           value: |
-            hello: world
+            somedata: {{ .Values.cluster_dummy.somedata }}
         - name: ARGOCD_APP_NAME
           value: operatorcatalogapp
         {{- if not (empty .Values.avp.secret) }}

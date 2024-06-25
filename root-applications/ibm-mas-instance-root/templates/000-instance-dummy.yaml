@@ -38,8 +38,7 @@ spec:
       env:
         - name: {{ .Values.avp.values_varname }}
           value: |
-            hello: world
-
+            somedata: {{ .Values.instance_dummy.somedata }}
         - name: ARGOCD_APP_NAME
           value: syncres
         {{- if not (empty .Values.avp.secret) }}
