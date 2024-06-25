@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mascore2816.root.fyre-dev
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: openshift-gitops
+    server: 'https://kubernetes.default.svc'
+  project: "mas"
+  source:
+    path: root-applications/ibm-mas-account-root
+    repoURL: https://github.com/tomklapiscak/gitops-sandbox
+    targetRevision: "mascore2816"
+    helm:
+      values: |
+          account:
+            id: fyre-dev
+
+          generator:
+            repo_url: "https://github.ibm.com/maximoappsuite/gitops-envs"
+            revision: "mascore2816"
+
+          source:
+            repo_url: "https://github.com/tomklapiscak/gitops-sandbox"
+            revision: "mascore2816"
+          
+          argo:
+            namespace: "openshift-gitops"
+            projects:
+              rootapps: mas
+              apps: mas
+    
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=false

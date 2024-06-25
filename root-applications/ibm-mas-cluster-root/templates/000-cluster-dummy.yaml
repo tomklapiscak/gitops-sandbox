@@ -1,0 +1,55 @@
+{{- if not (empty .Values.cluster_dummy) }}
+---
+# IBM Maximo Operator Catalog
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mascore2816.cluster.dummy.{{ .Values.cluster.id }}
+  namespace: {{ .Values.argo.namespace }}
+  labels:
+    environment: '{{ .Values.account.id }}'
+    region: '{{ .Values.region.id }}'
+    cluster: '{{ .Values.cluster.id }}'
+  annotations:
+    argocd.argoproj.io/sync-wave: "000"
+    healthCheckTimeout: "1800"
+    {{- if and .Values.notifications .Values.notifications.slack_channel_id }}
+    notifications.argoproj.io/subscribe.on-sync-failed.workspace1: {{ .Values.notifications.slack_channel_id }}
+    notifications.argoproj.io/subscribe.on-sync-succeeded.workspace1: {{ .Values.notifications.slack_channel_id }}
+    {{- end }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  ignoreDifferences:
+  - group: '*'
+    kind: ServiceAccount
+    jsonPointers:
+    - /imagePullSecrets
+  project: "{{ .Values.argo.projects.apps }}"
+  destination:
+    server: {{ .Values.cluster.url }}
+    namespace: namespace: "mascore2816-{{ .Values.cluster.id }}"
+  source:
+    repoURL: "{{ .Values.source.repo_url }}"
+    path: charts/dummy
+    targetRevision: "{{ .Values.source.revision }}"
+    plugin:
+      name: {{ .Values.avp.name }}
+      env:
+        - name: {{ .Values.avp.values_varname }}
+          value: |
+            hello: world
+        - name: ARGOCD_APP_NAME
+          value: operatorcatalogapp
+        {{- if not (empty .Values.avp.secret) }}
+        - name: AVP_SECRET
+          value: {{ .Values.avp.secret }}
+        {{- end }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - RespectIgnoreDifferences=true
+{{- end }}
