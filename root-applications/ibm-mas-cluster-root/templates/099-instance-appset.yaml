@@ -86,12 +86,15 @@ spec:
                 value: "{{ .Values.avp.secret }}"
               - name: avp.values_varname
                 value: "{{ .Values.avp.values_varname }}"
+
+              - name: prune
+                value: {{ .Values.prune }}
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: {{ .Values.argo.namespace }}
       syncPolicy:
         automated:
-          prune: true
+          prune: {{ .Values.prune }}
           selfHeal: true
         syncOptions:
           - CreateNamespace=false
