@@ -53,4 +53,7 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - RespectIgnoreDifferences=true
+    managedNamespaceMetadata:
+      labels:
+        app.kubernetes.io/instance: mascore2816.cluster.dummy.{{ .Values.cluster.id }}
 {{- end }}
