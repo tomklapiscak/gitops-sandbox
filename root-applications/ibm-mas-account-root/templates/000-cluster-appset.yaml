@@ -76,7 +76,7 @@ spec:
                 value: "{{ .Values.avp.values_varname }}"
 
               - name: prune
-                value: {{ .Values.prune }}
+                value: "{{ .Values.prune }}"
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: {{ .Values.argo.namespace }}
