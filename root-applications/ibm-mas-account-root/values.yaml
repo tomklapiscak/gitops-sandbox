@@ -26,3 +26,4 @@ argo:
 
 
 prune: false
+preserveResourcesOnDeletion: true
