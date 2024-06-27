@@ -32,6 +32,8 @@ spec:
               revision: "{{ .Values.generator.revision }}"
               files:
               - path: "{{ .Values.account.id }}/*/cluster-dummy.yaml"
+  syncPolicy:
+    preserveResourcesOnDeletion: {{ .Values.preserveResourcesOnDeletion }}
   template:
     metadata:
       name: "mascore2816.cluster.{{ `{{.cluster.id}}` }}"
@@ -77,6 +79,9 @@ spec:
 
               - name: prune
                 value: "{{ .Values.prune }}"
+
+              - name: preserveResourcesOnDeletion
+                value: "{{ .Values.preserveResourcesOnDeletion }}"
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: {{ .Values.argo.namespace }}
