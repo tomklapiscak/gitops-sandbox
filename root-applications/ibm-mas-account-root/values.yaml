@@ -26,4 +26,5 @@ argo:
 
 
 prune: false
-preserveResourcesOnDeletion: true
+preserveResourcesOnDeletion: false
+appsetApplicationSyncPolicy: "create-update"
