@@ -34,7 +34,7 @@ spec:
               - path: "{{ .Values.account.id }}/*/cluster-dummy.yaml"
   template:
     metadata:
-      name: "cluster.{{ `{{.cluster.id}}` }}"
+      name: "mascore2816.cluster.{{ `{{.cluster.id}}` }}"
       labels:
         environment: '{{ .Values.account.id }}'
         region: '{{ `{{ .region.id }}` }}'
