@@ -35,8 +35,7 @@ spec:
               files:
               - path: "{{ .Values.account.id }}/{{ .Values.cluster.id }}/*/instance-dummy.yaml"
   syncPolicy:
-    preserveResourcesOnDeletion: {{ .Values.preserveResourcesOnDeletion }}
-    applicationsSync: {{ .Values.appsetApplicationSyncPolicy }}
+    applicationsSync: "{{- if .Values.auto_delete.instance_roots }}sync{{- else }}create-update{{- end }}"
   template:
     metadata:
       name: "mascore2816.instance.{{ .Values.cluster.id }}.{{ `{{.instance.id}}` }}"
@@ -90,14 +89,14 @@ spec:
               - name: avp.values_varname
                 value: "{{ .Values.avp.values_varname }}"
 
-              - name: prune
-                value: "{{ .Values.prune }}"
+              - name: auto_delete.resources
+                value: "{{ .Values.auto_delete.resources }}"
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: {{ .Values.argo.namespace }}
       syncPolicy:
         automated:
-          prune: {{ .Values.prune }}
+          prune: {{ .Values.auto_delete.applications }}
           selfHeal: true
         syncOptions:
           - CreateNamespace=false

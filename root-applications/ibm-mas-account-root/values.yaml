@@ -25,6 +25,8 @@ argo:
     apps: "mas"
 
 
-prune: false
-preserveResourcesOnDeletion: false
-appsetApplicationSyncPolicy: "create-update"
+auto_delete:
+  cluster_roots: true
+  instance_roots: true
+  applications: true
+  resources: true

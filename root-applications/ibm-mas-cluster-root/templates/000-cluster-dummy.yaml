@@ -48,7 +48,7 @@ spec:
         {{- end }}
   syncPolicy:
     automated:
-      prune: {{ .Values.prune }}
+      prune: {{ .Values.auto_delete.resources }}
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
