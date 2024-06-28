@@ -1,0 +1,9 @@
+{{- if (eq .Values.somedata "configmap2")  }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: placeholder
+data:
+  somedata: "{{ .Values.somedata }}"
+{{- end }}
