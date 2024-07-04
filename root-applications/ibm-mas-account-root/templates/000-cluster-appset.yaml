@@ -4,7 +4,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: mascore2816.cluster-appset.{{ .Values.account.id }}
+  name: sandbox.cluster-appset.{{ .Values.account.id }}
   namespace: {{ .Values.argo.namespace }}
   labels:
     environment: '{{ .Values.account.id }}'
@@ -36,7 +36,7 @@ spec:
     applicationsSync: "{{- if .Values.auto_delete.cluster_roots }}sync{{- else }}create-update{{- end }}"
   template:
     metadata:
-      name: "mascore2816.cluster.{{ `{{.cluster.id}}` }}"
+      name: "sandbox.cluster.{{ `{{.cluster.id}}` }}"
       labels:
         environment: '{{ .Values.account.id }}'
         region: '{{ `{{ .region.id }}` }}'

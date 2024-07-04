@@ -4,7 +4,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mascore2816.instance.dummy.{{ .Values.cluster.id }}.{{ .Values.instance.id }}
+  name: sandbox.instance.dummy.{{ .Values.cluster.id }}.{{ .Values.instance.id }}
   namespace: {{ .Values.argo.namespace }}
   labels:
     environment: '{{ .Values.account.id }}'
@@ -28,7 +28,7 @@ spec:
   project: "{{ .Values.argo.projects.apps }}"
   destination:
     server: {{ .Values.cluster.url }}
-    namespace: "mascore2816-{{ .Values.cluster.id }}-{{ .Values.instance.id }}"
+    namespace: "sandbox-{{ .Values.cluster.id }}-{{ .Values.instance.id }}"
   source:
     repoURL: "{{ .Values.source.repo_url }}"
     path: charts/dummy
@@ -54,5 +54,5 @@ spec:
       - RespectIgnoreDifferences=true
     managedNamespaceMetadata:
       labels:
-        app.kubernetes.io/instance: mascore2816.instance.dummy.{{ .Values.cluster.id }}.{{ .Values.instance.id }}
+        app.kubernetes.io/instance: sandbox.instance.dummy.{{ .Values.cluster.id }}.{{ .Values.instance.id }}
 {{- end }}

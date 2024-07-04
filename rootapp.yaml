@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mascore2816.root.fyre-dev
+  name: sandbox.root.fyre-dev
   namespace: openshift-gitops
 spec:
   destination:
@@ -11,7 +11,7 @@ spec:
   source:
     path: root-applications/ibm-mas-account-root
     repoURL: https://github.com/tomklapiscak/gitops-sandbox
-    targetRevision: "mascore2816"
+    targetRevision: "sandbox"
     helm:
       values: |
           account:
@@ -19,11 +19,11 @@ spec:
 
           generator:
             repo_url: "https://github.ibm.com/maximoappsuite/gitops-envs"
-            revision: "mascore2816"
+            revision: "mascore3100"
 
           source:
             repo_url: "https://github.com/tomklapiscak/gitops-sandbox"
-            revision: "mascore2816"
+            revision: "mascore3100"
           
           argo:
             namespace: "openshift-gitops"
