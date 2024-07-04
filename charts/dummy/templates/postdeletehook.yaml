@@ -35,9 +35,6 @@ spec:
             requests:
               cpu: 10m
               memory: 64Mi
-          volumeMounts:
-            - name: "mongo-db"
-              mountPath: /etc/mas/secrets/mongo_db
 
           command:
             - /bin/sh
