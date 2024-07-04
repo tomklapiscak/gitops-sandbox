@@ -11,7 +11,7 @@ spec:
   source:
     path: root-applications/ibm-mas-account-root
     repoURL: https://github.com/tomklapiscak/gitops-sandbox
-    targetRevision: "sandbox"
+    targetRevision: "mascore3100"
     helm:
       values: |
           account:

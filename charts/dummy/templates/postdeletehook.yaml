@@ -1,0 +1,11 @@
+---
+kind: Secret
+apiVersion: v1
+metadata:
+  name: mongo-db
+  annotations:
+    argocd.argoproj.io/hook: PostDelete
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+stringData:
+  hello: "world"
+type: Opaque
