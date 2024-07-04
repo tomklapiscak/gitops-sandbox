@@ -6,7 +6,6 @@ metadata:
   namespace: default
   annotations:
     argocd.argoproj.io/hook: PostDelete
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 stringData:
   hello: "world"
 type: Opaque
@@ -20,7 +19,6 @@ metadata:
   namespace: default
   annotations:
     argocd.argoproj.io/hook: PostDelete
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:
     spec:
