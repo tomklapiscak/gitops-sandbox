@@ -4,8 +4,6 @@ apiVersion: v1
 metadata:
   name: sandbox-postdelete-secret
   namespace: default
-  annotations:
-    argocd.argoproj.io/hook: PostDelete
 stringData:
   hello: "world"
 type: Opaque
