@@ -1,9 +1,0 @@
-{{- if not (empty .Values.somedata) }}
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: placeholder
-data:
-  somedata: "{{ .Values.somedata }}"
-{{- end }}
