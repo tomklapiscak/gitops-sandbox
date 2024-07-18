@@ -11,25 +11,27 @@ spec:
   source:
     path: root-applications/ibm-mas-account-root
     repoURL: https://github.com/tomklapiscak/gitops-sandbox
-    targetRevision: "mascore3100"
+    targetRevision: "deleteprotection"
     helm:
       values: |
           account:
             id: fyre-dev
 
           generator:
-            repo_url: "https://github.ibm.com/maximoappsuite/gitops-envs"
-            revision: "mascore3100"
+            repo_url: "https://github.com/tomklapiscak/gitops-sandbox"
+            revision: "deleteprotection"
 
           source:
             repo_url: "https://github.com/tomklapiscak/gitops-sandbox"
-            revision: "mascore3100"
+            revision: "deleteprotection"
           
           argo:
             namespace: "openshift-gitops"
             projects:
               rootapps: mas
               apps: mas
+
+          auto_delete: false
     
   syncPolicy:
     syncOptions:

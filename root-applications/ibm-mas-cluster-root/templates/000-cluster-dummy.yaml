@@ -42,6 +42,7 @@ spec:
         - name: {{ .Values.avp.values_varname }}
           value: |
             somedata: {{ .Values.cluster_dummy.somedata }}
+            somedata2: {{ .Values.cluster_dummy.somedata2 }}
         - name: ARGOCD_APP_NAME
           value: operatorcatalogapp
         {{- if not (empty .Values.avp.secret) }}
@@ -50,7 +51,7 @@ spec:
         {{- end }}
   syncPolicy:
     automated:
-      prune: {{ .Values.auto_delete.resources }}
+      prune: {{ .Values.auto_delete }}
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
