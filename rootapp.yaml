@@ -18,7 +18,7 @@ spec:
             id: fyre-dev
 
           generator:
-            repo_url: "https://github.com/tomklapiscak/gitops-sandbox"
+            repo_url: "https://github.ibm.comcom/maximoappsuite/gitops-envs"
             revision: "deleteprotection"
 
           source:

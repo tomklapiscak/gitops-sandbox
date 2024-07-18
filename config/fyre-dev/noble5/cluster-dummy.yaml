@@ -1,5 +1,0 @@
-merge-key: "fyre-dev/noble5"
-
-cluster_dummy:
-  somedata: hello
-  somedata2: world
