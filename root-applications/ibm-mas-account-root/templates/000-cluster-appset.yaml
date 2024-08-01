@@ -32,6 +32,11 @@ spec:
               revision: "{{ .Values.generator.revision }}"
               files:
               - path: "config/{{ .Values.account.id }}/*/cluster-dummy.yaml"
+          - git:
+              repoURL: "{{ .Values.generator.repo_url }}"
+              revision: "{{ .Values.generator.revision }}"
+              files:
+              - path: "config/{{ .Values.account.id }}/*/cluster-dummy2.yaml"
   syncPolicy:
     applicationsSync: "{{- if .Values.auto_delete }}sync{{- else }}create-update{{- end }}"
   template:
