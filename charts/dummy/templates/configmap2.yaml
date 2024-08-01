@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: "{{ .Values.somedata2 }}"
+  name: "placeholder2"
 data:
   somedata: "{{ .Values.somedata2 }}"
 {{- end }}

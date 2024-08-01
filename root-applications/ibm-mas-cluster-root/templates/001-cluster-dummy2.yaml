@@ -31,7 +31,7 @@ spec:
   project: "{{ .Values.argo.projects.apps }}"
   destination:
     server: {{ .Values.cluster.url }}
-    namespace: "sandbox-{{ .Values.cluster.id }}"
+    namespace: "sandbox2-{{ .Values.cluster.id }}"
   source:
     repoURL: "{{ .Values.source.repo_url }}"
     path: charts/dummy
@@ -56,7 +56,4 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - RespectIgnoreDifferences=true
-    managedNamespaceMetadata:
-      labels:
-        app.kubernetes.io/instance: sandbox.cluster.dummy2.{{ .Values.cluster.id }}
 {{- end }}

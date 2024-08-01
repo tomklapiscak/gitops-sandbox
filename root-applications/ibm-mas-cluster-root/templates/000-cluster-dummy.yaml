@@ -56,7 +56,4 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - RespectIgnoreDifferences=true
-    managedNamespaceMetadata:
-      labels:
-        app.kubernetes.io/instance: sandbox.cluster.dummy.{{ .Values.cluster.id }}
 {{- end }}
