@@ -5,5 +5,6 @@ kind: ConfigMap
 metadata:
   name: "placeholder3"
 data:
-  somedata: "{{ .Values.bundleLevelProperties }}"
+  somedata: |-
+    {{ .Values.bundleLevelProperties }}
 {{- end }}
