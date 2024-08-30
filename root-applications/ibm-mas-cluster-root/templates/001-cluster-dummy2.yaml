@@ -41,11 +41,7 @@ spec:
       env:
         - name: {{ .Values.avp.values_varname }}
           value: |
-            somedata: {{ .Values.cluster_dummy2.somedata }}
-            somedata2: {{ .Values.cluster_dummy2.somedata2 }}
-
-            bundleLevelProperties: |-
-              {{ .Values.cluster_dummy2.bundleLevelProperties }}
+            {{ .Values.cluster_dummy2 | toYaml | nindent 12 }}
         - name: ARGOCD_APP_NAME
           value: operatorcatalogapp
         {{- if not (empty .Values.avp.secret) }}
