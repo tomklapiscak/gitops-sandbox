@@ -4,4 +4,4 @@ kind: ConfigMap
 metadata:
   name: "placeholder3"
 data:
-  {{ .Values }}
+{{ .Values  | toYaml  | indent 2 }}
