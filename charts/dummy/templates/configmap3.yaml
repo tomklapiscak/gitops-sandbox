@@ -1,0 +1,9 @@
+{{- if not (empty .Values.bundleLevelProperties) }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "placeholder3"
+data:
+  somedata: "{{ .Values.bundleLevelProperties }}"
+{{- end }}
