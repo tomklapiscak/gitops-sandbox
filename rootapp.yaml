@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mascore5516test
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: mascore5516test
+    server: 'https://kubernetes.default.svc'
+  project: "mas"
+  source:
+    path: templates
+    repoURL: https://github.com/tomklapiscak/gitops-sandbox
+    targetRevision: "mascore5516"
+    helm:
+      values: |
+          account:
+            id: fyre-dev
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,31 @@
+{{ $cli_image_tag := "13.2.0" }}
+{{ $job_label := "testjob" }}
+---
+
+kind: Job
+apiVersion: v1
+metadata:
+  name: {{ $job_label }}-v1-{{ cat (omit .Values "junitreporter" | toYaml) $cli_image_tag | adler32sum }}
+spec:
+  template:
+    metadata:
+      labels:
+        app: {{ $job_label }}
+    spec:
+      serviceAccountName: "default"
+      containers:
+        - name: run
+          image: "quay.io/ibmmas/cli:{{ $cli_image_tag }}"
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: 200m
+              memory: 512Mi
+            requests:
+              cpu: 10m
+              memory: 64Mi
+          env: []
+          command:
+            - /bin/sh
+            - -c
+            - while true; do echo "sleep"; sleep 100; done
