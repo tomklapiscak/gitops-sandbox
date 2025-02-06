@@ -1,11 +1,16 @@
 {{ $cli_image_tag := "13.2.0" }}
-{{ $job_label := "testjob" }}
+
+{{ $job_name_prefix := "postsync-rhcm-update-sm-job" }}
+{{ $job_name_version := "v1" }}
+{{ $job_name_suffix := cat( omit .Values "junitreporter" | toYaml) $cli_image_tag | adler32sum }}
+
+
 ---
 
 kind: Job
 apiVersion: batch/v1
 metadata:
-  name: {{ $job_label }}-v1-{{ cat (omit .Values "junitreporter" | toYaml) $cli_image_tag | adler32sum }}
+  name: {{ $job_name_prefix }}-{{ $job_name_version }}-{{ $job_name_suffix }}
 spec:
   template:
     metadata:
