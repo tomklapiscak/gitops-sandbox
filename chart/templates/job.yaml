@@ -4,7 +4,7 @@ Use the build/bin/set-cli-image.sh script to update this value across all charts
 {{- $_cli_image_tag := "13.2.0" }}
 
 {{- /*
-Meaningful prefix for the job resource name. Must be under 52 chars in length to leave room for the 11 char $_job_hash
+Meaningful prefix for the job resource name. Must be under 52 chars in length to leave room for the 11 chars reserved for '-' and $_job_hash.
 */}}
 {{- $_job_name_prefix := "postsync-rhcm-update-sm-job" }}
 
