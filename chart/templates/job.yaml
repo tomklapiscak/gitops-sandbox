@@ -13,6 +13,7 @@ spec:
         app: {{ $job_label }}
     spec:
       serviceAccountName: "default"
+      restartPolicy: Never
       containers:
         - name: run
           image: "quay.io/ibmmas/cli:{{ $cli_image_tag }}"
