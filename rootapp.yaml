@@ -9,7 +9,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: "mas"
   source:
-    path: templates
+    path: chart
     repoURL: https://github.com/tomklapiscak/gitops-sandbox
     targetRevision: "mascore5516"
     helm:
